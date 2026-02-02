@@ -1,5 +1,5 @@
-name: REPLACEREPONAME
-title: FIXME Course Title
+name: mta-dev-lightspeed
+title: Modernizing Java Applications with Red Hat MTA & Developer Lightspeed
 version: 1
 nav:
 - modules/ROOT/nav.adoc

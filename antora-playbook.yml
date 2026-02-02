@@ -1,6 +1,6 @@
 site:
-  title: FIXME Course Title
-  start_page: REPLACEREPONAME::index.adoc
+  title: Modernizing Java Applications with Red Hat MTA & Developer Lightspeed
+  start_page: mta-dev-lightspeed::index.adoc
 
 content:
   sources:
