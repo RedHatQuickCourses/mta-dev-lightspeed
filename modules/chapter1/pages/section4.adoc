@@ -1,0 +1,231 @@
+= Lab 4: Deploying the Migrated App on JBoss EAP 8
+
+In the final section, you apply the recommended changes to migrate the **Coolstore** application to **Jakarta EE**.
+You rebuild the container image using **JBoss EAP 8**, deploy it on OpenShift, and validate that the modernized application functions as expected.
+
+This step completes the migration journey, demonstrating how a legacy enterprise Java application can be successfully transformed and redeployed on a modern, supported runtime—without disrupting the underlying container platform.
+
+== Instructions
+
+* Navigate to the cloned legacy application code:
++
+[source,subs="verbatim,quotes",bash]
+----
+**git clone https://github.com/opentraining-labs-customizations/getting-started-migrated.git**
+
+**cd getting-started-migrated**
+----
+
+* Substitute <GUID> with your Openshift cluster id in below file:
++
+[source,subs="verbatim,quotes",bash]
+----
+**vi coolstore/src/main/webapp/keycloak.json**
+{
+    "realm": "eap",
+    "auth-server-url": "https://keycloak-coolstore-mono.apps.cluster-**<GUID>**.dynamic.redhatworkshops.io/",
+    "ssl-required": "external",
+    "resource": "eap-app",
+    "public-client": true,
+    "confidential-port": 0
+}
+----
+
+* Build the code to reflect the changes in jar file using maven:
++
+[source,subs="verbatim,quotes",bash]
+----
+**mvn clean package -pl coolstore -am**
+----
++
+Note the file is build at below location:
++
+[source,subs="verbatim,quotes",bash]
+----
+**ls coolstore/target/ROOT.war**
+----
+
+* Copy the application war file as shown below to the new cloned application deployment repository:
++
+[source,subs="verbatim,quotes",bash]
+----
+**ls**
+getting-started  mta-dev-lightspeed
+
+**cp getting-started-migrated/coolstore/target/ROOT.war  \** **mta-dev-lightspeed/eap8_coolstore/00-eap8-coolstore-image**
+----
+
+* Next, let's deploy the application.
+Navigate to the below location:
++
+[source,subs="verbatim,quotes",bash]
+----
+**cd mta-dev-lightspeed/eap8_coolstore/00-eap8-coolstore-image/**
+----
++
+Let's create build config and imagestream for JBoss 8 as shown below:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc create -f 00-bc-is.yaml**
+namespace/coolstore-eap8 created
+buildconfig.build.openshift.io/coolstore-eap81 created
+imagestream.image.openshift.io/coolstore-eap81 created
+[redhatsystem 00-eap8-coolstore-image]$ 
+----
++
+Confirm the resources are created:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc project coolstore-eap8**
+Now using project "coolstore-eap8" on server "https://api.cluster-6f2l2.dynamic.redhatworkshops.io:6443".
+
+**oc get bc**
+NAME              TYPE     FROM     LATEST
+coolstore-eap81   Docker   Binary   0
+
+**oc get is**
+NAME              IMAGE REPOSITORY                                                                  TAGS   UPDATED
+coolstore-eap81   image-registry.openshift-image-registry.svc:5000/coolstore-eap8/coolstore-eap81
+----
++
+Build the image:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc start-build coolstore-eap81 --from-dir=. --follow**
+----
++
+Navigate back to below directory structure:
++
+[source,subs="verbatim,quotes",bash]
+----
+**cd mta-dev-lightspeed/eap8_coolstore**
+----
++
+Deploy postgresql deployment and it's service:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc create -f 01-postgresql-deploy-svc.yaml**
+deployment.apps/postgres created
+service/postgres created
+----
++
+Confirm the deployment and service are working:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc get deployment**
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+postgres   1/1     1            1           2m21s
+
+**oc get svc**
+NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+postgres   ClusterIP   172.31.185.74   <none>        5432/TCP   2m32s
+----
++
+Create the configmap for realm for keycloak deployment and confirms it's deployment:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc create configmap keycloak-realm --from-file=realm-export.json**
+configmap/keycloak-realm created
+
+**oc get configmap keycloak-realm**
+NAME             DATA   AGE
+keycloak-realm   1      20s
+----
++
+Substitute <GUID> in below file with your Openshift cluster's GUID:
++
+[source,subs="verbatim,quotes",bash]
+----
+** vi 02-keyclaok-deploy-svc-route.yaml**
+...
+            - name: KC_PROXY
+              value: edge
+            - name: KC_HOSTNAME
+              value: keycloak-coolstore-mono.apps.cluster-<GUID>.dynamic.redhatworkshops.io
+            - name: KC_HOSTNAME_STRICT
+              value: "false"
+            - name: KC_HTTP_ENABLED
+              value: "true"
+...
+----
++
+Create the keycloak deployment and confirm if resources are deployed:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc create -f 02-keyclaok-deploy-svc-route.yaml**
+imagestream.image.openshift.io/keycloak-rhbk created
+deployment.apps/keycloak created
+service/keycloak created
+route.route.openshift.io/keycloak created
+job.batch/keycloak-bootstrap created
+
+**oc get deployment/keycloak**
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+keycloak   1/1     1            1           31s
+
+**oc get svc/keycloak**
+NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+keycloak   ClusterIP   172.31.102.14   <none>        8080/TCP   42s
+
+**oc get route/keycloak**
+NAME       HOST/PORT                                                               PATH   SERVICES   PORT   TERMINATION     WILDCARD
+keycloak   keycloak-coolstore-eap8.apps.cluster-6f2l2.dynamic.redhatworkshops.io          keycloak   http   edge/Redirect   None
+----
++
+Create the keycloak job that would create a user named **user1** and password **redhat**:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc create -f 03-keycloak-job.yaml**
+job.batch/keycloak-bootstrap created
+
+**oc get jobs**
+NAME                 STATUS     COMPLETIONS   DURATION   AGE
+keycloak-bootstrap   Complete   1/1           9s         17s
+----
++
+Create the **Coolstore** deployment:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc create -f 04-coolstore.yaml**
+deployment.apps/coolstore created
+service/coolstore created
+route.route.openshift.io/coolstore created
+----
++
+Confirm application is deployment:
++
+[source,subs="verbatim,quotes",bash]
+----
+**oc get deployment/coolstore**
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+coolstore   1/1     1            1           77s
+
+**oc get svc/coolstore**
+NAME        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+coolstore   ClusterIP   172.31.133.182   <none>        8080/TCP   89s
+
+**oc get route/coolstore*
+NAME        HOST/PORT                                                                PATH   SERVICES    PORT   TERMINATION   WILDCARD
+coolstore   coolstore-coolstore-eap8.apps.cluster-6f2l2.dynamic.redhatworkshops.io          coolstore   8080   edge          None
+----
++
+Navigate
+
+image::image4.png[align="center"]
+
+* Navigate
+
+image::image2.png[align="center"]
+
+* Navigate
+
+image::image3.png[align="center"]

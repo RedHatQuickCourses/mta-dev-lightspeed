@@ -1,27 +1,38 @@
-= An Example Quick Course
+= Modernizing Java Applications with Red Hat MTA & Developer Lightspeed
 :navtitle: Home
 
 == Introduction
 
-Course Title: Course title FIXME
+Welcome to this quick course on the _**Modernizing Java Applications with Red Hat MTA & Developer Lightspeed**_.
 
-Description:
-Course description FIXME
+In this hands-on lab training, we shall see all these features of Red Hat Migration Toolkit for Applications (MTA) along with Developer Lightspeed in action.
 
-Duration: FIXME hours
+== What's in this course?
+
+A hands-on lab-oriented training demonstrating how to migrate a real-world enterprise Java application using _Red Hat Migration Toolkit for Applications (MTA) and Developer Lightspeed_, transforming a legacy **javax-based application** deployed on **JBoss EAP 7** into a modern **jakarta-based application** running on **JBoss EAP 8**.
+
+Duration: 1 hours
+
+== Contributors
+
+The PTL team acknowledges the valuable contributions of the following Red Hat associates:
+
+* Shaaf (SME)
+* RRR (Contributor)
+* Yogita Soni (Content Architect)
+* Anna Swicegood (Learning Product Manager)
 
 == Objectives
 
 On completing this course, you should be able to:
 
-* Observable, measurable objective...
-* Observable, measurable objective...
-* Observable, measurable objective...
+* Install...
 
 == Prerequisites
 
 This course assumes that you have the following prior experience:
 
-* Course or experience...
-* Course or experience...
-* Course or experience...
+* Working knowledge of Java SE
+* Basic understanding of Java EE / Jakarta EE concepts
+* Familiarity with legacy javax APIs is helpful
+* Red Hat Openshift Platform
