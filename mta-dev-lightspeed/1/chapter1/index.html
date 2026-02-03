@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Chapter 1 :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
+    <title>Lab Scenario :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
     <link rel="prev" href="../LABENV/index.html">
     <link rel="next" href="section1.html">
     <meta name="generator" content="Antora 3.1.3">
@@ -55,45 +55,19 @@
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Chapter 1</a>
+    <a class="nav-link" href="index.html">Lab Scenario</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section1.html">Section 1</a>
+    <a class="nav-link" href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section2.html">Section 2</a>
+    <a class="nav-link" href="section2.html">Lab 2: Configure MTA with Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section3.html">Section 3</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../chapter2/index.html">Chapter 2</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter2/section1.html">Section 1</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../chapter3/index.html">Chapter 3</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter3/section1.html">Section 1</a>
+    <a class="nav-link" href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter3/section2.html">Section 2</a>
+    <a class="nav-link" href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
   </li>
 </ul>
   </li>
@@ -135,7 +109,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Modernizing Java Applications with Red Hat MTA & Developer Lightspeed</a></li>
-    <li><a href="index.html">Chapter 1</a></li>
+    <li><a href="index.html">Lab Scenario</a></li>
   </ul>
 </nav>
 </div>
@@ -144,23 +118,45 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Chapter 1</h1>
+<h1 class="page">Lab Scenario</h1>
+<div class="sect1">
+<h2 id="_situation"><a class="anchor" href="#_situation"></a>Situation</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>In this section, we cover&#8230;&#8203; FIXME</p>
+<p>The <strong>Coolstore</strong> application is a business-critical retail application currently running on <strong>JBoss EAP 7 as a containerized workload on OpenShift</strong>.</p>
 </div>
+<div class="paragraph">
+<p>The application is built using legacy <strong>javax APIs</strong> and packaged for deployment in a container, allowing it to run reliably in a Kubernetes-based platform—but on an aging Java EE stack.</p>
+</div>
+<div class="paragraph">
+<p>To stay aligned with modern enterprise standards and supported runtimes, the organization needs to <strong>migrate Coolstore to JBoss EAP 8</strong>, also containerized and deployed on OpenShift. This migration requires transforming the application from <strong>javax to jakarta</strong>, while ensuring compatibility, stability, and operational consistency within the OpenShift environment.</p>
+</div>
+<div class="paragraph">
+<p>In this hands-on, lab-oriented training, learners use <strong>Red Hat Migration Toolkit for Applications (MTA) with Developer Lightspeed</strong> to analyze the Coolstore codebase running on EAP 7 containers, identify migration issues, and receive AI-assisted recommendations for modernization.</p>
+</div>
+<div class="paragraph">
+<p>Learners then apply these insights to refactor the legacy code, rebuild the container image, and <strong>deploy the migrated jakarta-based Coolstore application on JBoss EAP 8 running on OpenShift</strong>. The labs closely mirror real-world enterprise modernization efforts, combining application migration with container and platform-aware validation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_training_scenario_and_approach"><a class="anchor" href="#_training_scenario_and_approach"></a>Training Scenario and Approach</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>Add or remove section entries in the <code>antora.yaml</code> file as needed.</p>
+<p>You are responsible for modernizing the <strong>Coolstore</strong> retail application, a production-like enterprise Java workload running as a containerized <strong>JBoss EAP 7</strong> application on OpenShift. The application is stable, but it relies on legacy javax APIs, making it incompatible with newer Jakarta EE–based runtimes.</p>
 </li>
 <li>
-<p>Ensure you create or delete the corresponding directory for the chapter accordingly.</p>
+<p>Your goal in this training is to <strong>migrate Coolstore to JBoss EAP 8</strong>, also running in containers on OpenShift, using a controlled, tool-assisted, and repeatable approach—just as you would in a real enterprise modernization project.</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../LABENV/index.html">Lab Environment</a></span>
-  <span class="next"><a href="section1.html">Section 1</a></span>
+  <span class="next"><a href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a></span>
 </nav>
 </article>
   </div>

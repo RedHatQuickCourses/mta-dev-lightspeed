@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Lab 1: Deploying Coolstore on JBoss EAP 7 :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
-    <link rel="prev" href="index.html">
-    <link rel="next" href="section2.html">
+    <title>Lab 4: Deploying the Migrated App on JBoss EAP 8 :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
+    <link rel="prev" href="section3.html">
+    <link rel="next" href="../appendix/appendix.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -57,7 +57,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">Lab Scenario</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -66,7 +66,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
   </li>
 </ul>
@@ -110,7 +110,7 @@
   <ul>
     <li><a href="../index.html">Modernizing Java Applications with Red Hat MTA & Developer Lightspeed</a></li>
     <li><a href="index.html">Lab Scenario</a></li>
-    <li><a href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a></li>
+    <li><a href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a></li>
   </ul>
 </nav>
 </div>
@@ -119,14 +119,15 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Lab 1: Deploying Coolstore on JBoss EAP 7</h1>
+<h1 class="page">Lab 4: Deploying the Migrated App on JBoss EAP 8</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this lab, you deploy the legacy <strong>Coolstore</strong> application as a containerized workload on <strong>JBoss EAP 7</strong> running on OpenShift. This establishes the baseline environment and allows you to observe how the legacy javax-based application behaves in its current, production-like state.</p>
+<p>In the final section, you apply the recommended changes to migrate the <strong>Coolstore</strong> application to <strong>Jakarta EE</strong>.
+You rebuild the container image using <strong>JBoss EAP 8</strong>, deploy it on OpenShift, and validate that the modernized application functions as expected.</p>
 </div>
 <div class="paragraph">
-<p>You follow predefined steps to build and deploy the container image, verify the application functionality, and confirm that Coolstore is running correctly on EAP 7.</p>
+<p>This step completes the migration journey, demonstrating how a legacy enterprise Java application can be successfully transformed and redeployed on a modern, supported runtime—without disrupting the underlying container platform.</p>
 </div>
 </div>
 </div>
@@ -136,42 +137,17 @@
 <div class="ulist">
 <ul>
 <li>
-<p><em>Access the Red Hat OpenShift Cluster</em></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Log in to the OpenShift cluster provisioned for this lab using the administrator credentials provided.</p>
+<p>Navigate to the cloned legacy application code:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc login -u admin -p &lt;password&gt; https://api.cluster-&lt;GUID&gt;.dynamic.redhatworkshops.io:6443</strong></code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><em>Prepare and Build the Legacy Application</em></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Clone the Git repository containing the legacy application that will be used throughout this training.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>git clone https://github.com/opentraining-labs-customizations/getting-started.git</strong></code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>git clone https://github.com/opentraining-labs-customizations/getting-started-migrated.git</strong>
+
+<strong>cd getting-started-migrated</strong></code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Navigate to the directory containing the cloned source code.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>cd getting-started</strong></code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Update the Keycloak configuration to match your Red Hat OpenShift environment. Edit the following file and replace the placeholder &lt;GUID&gt; with your OpenShift cluster identifier.</p>
+<p>Substitute &lt;GUID&gt; with your Openshift cluster id in below file:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>vi coolstore/src/main/webapp/keycloak.json</strong>
@@ -187,100 +163,98 @@
 </div>
 </li>
 <li>
-<p>Build the application using Maven so that the updated configuration is included in the deployable artifact.</p>
+<p>Build the code to reflect the changes in jar file using maven:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>mvn clean package -pl coolstore -am</strong></code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Verify that the application archive has been successfully generated.</p>
+<div class="paragraph">
+<p>Note the file is build at below location:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>ls coolstore/target/ROOT.war</strong></code></pre>
 </div>
 </div>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p><em>Deploy the Legacy Coolstore Application on OpenShift (JBoss EAP 7)</em></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Clone the repository that contains the OpenShift resources and deployment configuration for the legacy application.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>git clone https://github.com/opentraining-labs-customizations/mta-dev-lightspeed.git</strong></code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Copy the previously built application WAR file into the deployment repository.</p>
+<p>Copy the application war file as shown below to the new cloned application deployment repository:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>ls</strong>
 getting-started  mta-dev-lightspeed
 
-<strong>cp getting-started/coolstore/target/ROOT.war \</strong>
-<strong>mta-dev-lightspeed/eap7_coolstore/00-eap7-coolstore-image </strong></code></pre>
+<strong>cp getting-started-migrated/coolstore/target/ROOT.war  \</strong> <strong>mta-dev-lightspeed/eap8_coolstore/00-eap8-coolstore-image</strong></code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Navigate to the image build directory and create the required BuildConfig and ImageStream for JBoss EAP 7.</p>
+<p>Next, let&#8217;s deploy the application.
+Navigate to the below location:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>cd mta-dev-lightspeed/eap7_coolstore/00-eap7-coolstore-image/</strong>
-
-<strong>oc create -f 00-bc-is.yaml</strong>
-namespace/coolstore-mono created
-buildconfig.build.openshift.io/eap74-coolstore created
-imagestream.image.openshift.io/eap74-coolstore created</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>cd mta-dev-lightspeed/eap8_coolstore/00-eap8-coolstore-image/</strong></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Verify that the resources have been created successfully.</p>
+<p>Let&#8217;s create build config and imagestream for JBoss 8 as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>**oc project coolstore-mono**
-Now using project "coolstore-mono" on server "https://api.cluster-6f2l2.dynamic.redhatworkshops.io:6443".
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create -f 00-bc-is.yaml</strong>
+namespace/coolstore-eap8 created
+buildconfig.build.openshift.io/coolstore-eap81 created
+imagestream.image.openshift.io/coolstore-eap81 created
+[redhatsystem 00-eap8-coolstore-image]$</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Confirm the resources are created:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc project coolstore-eap8</strong>
+Now using project "coolstore-eap8" on server "https://api.cluster-6f2l2.dynamic.redhatworkshops.io:6443".
 
-**oc get bc**
+<strong>oc get bc</strong>
 NAME              TYPE     FROM     LATEST
-eap74-coolstore   Docker   Binary   0
+coolstore-eap81   Docker   Binary   0
 
-**oc get is**
+<strong>oc get is</strong>
 NAME              IMAGE REPOSITORY                                                                  TAGS   UPDATED
-eap74-coolstore   image-registry.openshift-image-registry.svc:5000/coolstore-mono/eap74-coolstore</pre>
+coolstore-eap81   image-registry.openshift-image-registry.svc:5000/coolstore-eap8/coolstore-eap81</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Start a binary build using the copied application artifact.</p>
+<div class="paragraph">
+<p>Build the image:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc start-build eap74-coolstore --from-dir=. --follow</strong></code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc start-build coolstore-eap81 --from-dir=. --follow</strong></code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Navigate back to the main deployment directory and deploy the PostgreSQL database along with its service.</p>
+<div class="paragraph">
+<p>Navigate back to below directory structure:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>cd mta-dev-lightspeed/eap7_coolstore</strong>
-
-<strong>oc create -f 01-postgresql-deploy-svc.yaml</strong>
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>cd mta-dev-lightspeed/eap8_coolstore</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deploy postgresql deployment and it&#8217;s service:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create -f 01-postgresql-deploy-svc.yaml</strong>
 deployment.apps/postgres created
 service/postgres created</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Verify that the database deployment and service are running.</p>
+<div class="paragraph">
+<p>Confirm the deployment and service are working:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc get deployment</strong>
@@ -292,16 +266,9 @@ NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 postgres   ClusterIP   172.31.185.74   &lt;none&gt;        5432/TCP   2m32s</code></pre>
 </div>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>Create the configmap for realm for keycloak deployment and confirms it&#8217;s deployment:</p>
 </div>
-</li>
-<li>
-<p><em>Configure and Deploy Keycloak</em></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create a ConfigMap containing the Keycloak realm configuration.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create configmap keycloak-realm --from-file=realm-export.json</strong>
@@ -312,9 +279,9 @@ NAME             DATA   AGE
 keycloak-realm   1      20s</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Edit the Keycloak deployment file and replace &lt;GUID&gt; with your OpenShift cluster identifier.</p>
+<div class="paragraph">
+<p>Substitute &lt;GUID&gt; in below file with your Openshift cluster&#8217;s GUID:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong> vi 02-keyclaok-deploy-svc-route.yaml</strong>
@@ -330,9 +297,9 @@ keycloak-realm   1      20s</code></pre>
 ...</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Deploy Keycloak and confirm that all associated resources are created successfully.</p>
+<div class="paragraph">
+<p>Create the keycloak deployment and confirm if resources are deployed:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create -f 02-keyclaok-deploy-svc-route.yaml</strong>
@@ -342,22 +309,22 @@ service/keycloak created
 route.route.openshift.io/keycloak created
 job.batch/keycloak-bootstrap created
 
-<strong>oc get deployment keycloak</strong>
+<strong>oc get deployment/keycloak</strong>
 NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-keycloak   1/1     1            1           76s
+keycloak   1/1     1            1           31s
 
-<strong>oc get svc keycloak</strong>
+<strong>oc get svc/keycloak</strong>
 NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-keycloak   ClusterIP   172.31.70.162   &lt;none&gt;        8080/TCP   85s
+keycloak   ClusterIP   172.31.102.14   &lt;none&gt;        8080/TCP   42s
 
-<strong>oc get route</strong>
+<strong>oc get route/keycloak</strong>
 NAME       HOST/PORT                                                               PATH   SERVICES   PORT   TERMINATION     WILDCARD
-keycloak   keycloak-coolstore-mono.apps.cluster-6f2l2.dynamic.redhatworkshops.io          keycloak   http   edge/Redirect   None</code></pre>
+keycloak   keycloak-coolstore-eap8.apps.cluster-6f2l2.dynamic.redhatworkshops.io          keycloak   http   edge/Redirect   None</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Create a job to provision a default Keycloak user (user1 / redhat) required by the application.</p>
+<div class="paragraph">
+<p>Create the keycloak job that would create a user named <strong>user1</strong> and password <strong>redhat</strong>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create -f 03-keycloak-job.yaml</strong>
@@ -368,86 +335,75 @@ NAME                 STATUS     COMPLETIONS   DURATION   AGE
 keycloak-bootstrap   Complete   1/1           9s         17s</code></pre>
 </div>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>Create the <strong>Coolstore</strong> deployment:</p>
 </div>
-</li>
-<li>
-<p><em>Deploy the Coolstore Application</em></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create the ConfigMap required for JMS configuration.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create configmap eap-jms-cli --from-file=jms.cli</strong>
-configmap/eap-jms-cli created</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Deploy the Coolstore application along with its service and route.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create -f 04-coolstore-deploy.yaml</strong>
-deployment.apps/coolstore-app created
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc create -f 04-coolstore.yaml</strong>
+deployment.apps/coolstore created
 service/coolstore created
 route.route.openshift.io/coolstore created</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Verify that the application has been deployed successfully and is accessible.</p>
+<div class="paragraph">
+<p>Confirm application is deployment:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">oc get deployment/coolstore-app
-NAME            READY   UP-TO-DATE   AVAILABLE   AGE
-coolstore-app   1/1     1            1           62s
+<pre class="highlightjs highlight"><code class="language-none hljs"><strong>oc get deployment/coolstore</strong>
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+coolstore   1/1     1            1           77s
 
-oc get svc/coolstore
+<strong>oc get svc/coolstore</strong>
 NAME        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
-coolstore   ClusterIP   172.31.126.217   &lt;none&gt;        8080/TCP   71s
+coolstore   ClusterIP   172.31.133.182   &lt;none&gt;        8080/TCP   89s
 
-oc get route/coolstore
+<strong>*oc get route/coolstore</strong>
 NAME        HOST/PORT                                                                PATH   SERVICES    PORT   TERMINATION   WILDCARD
-coolstore   coolstore-coolstore-mono.apps.cluster-6f2l2.dynamic.redhatworkshops.io          coolstore   8080   edge          None</code></pre>
+coolstore   coolstore-coolstore-eap8.apps.cluster-6f2l2.dynamic.redhatworkshops.io          coolstore   8080   edge          None</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Navigate</p>
 </div>
 </li>
-<li>
-<p>Access the application route URL to verify that the legacy application has been successfully deployed and is running.</p>
+</ul>
+</div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/image1.png" alt="image1">
+<img src="_images/image4.png" alt="image4">
 </div>
 </div>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p>Validate the Keycloak integration by clicking the <strong>Sign In</strong> button on the application landing page.</p>
+<p>Navigate</p>
+</li>
+</ul>
+</div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="_images/image2.png" alt="image2">
 </div>
 </div>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p>Log in using the credentials <strong>username: user1</strong> and <strong>password: redhat</strong>, and confirm that authentication succeeds and the application is redirected to the main application interface.</p>
+<p>Navigate</p>
+</li>
+</ul>
+</div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="_images/image3.png" alt="image3">
 </div>
 </div>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html">Lab Scenario</a></span>
-  <span class="next"><a href="section2.html">Lab 2: Configure MTA with Developer Lightspeed</a></span>
+  <span class="prev"><a href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a></span>
+  <span class="next"><a href="../appendix/appendix.html">Appendix</a></span>
 </nav>
 </article>
   </div>

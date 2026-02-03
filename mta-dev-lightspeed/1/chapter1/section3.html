@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Section 3 :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
+    <title>Lab 3: Migrating legacy code using MTA and Developer Lightspeed :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
     <link rel="prev" href="section2.html">
-    <link rel="next" href="../chapter2/index.html">
+    <link rel="next" href="section4.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -55,45 +55,19 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Chapter 1</a>
+    <a class="nav-link" href="index.html">Lab Scenario</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section1.html">Section 1</a>
+    <a class="nav-link" href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section2.html">Section 2</a>
+    <a class="nav-link" href="section2.html">Lab 2: Configure MTA with Developer Lightspeed</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="section3.html">Section 3</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../chapter2/index.html">Chapter 2</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter2/section1.html">Section 1</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../chapter3/index.html">Chapter 3</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter3/section1.html">Section 1</a>
+    <a class="nav-link" href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter3/section2.html">Section 2</a>
+    <a class="nav-link" href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
   </li>
 </ul>
   </li>
@@ -135,8 +109,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Modernizing Java Applications with Red Hat MTA & Developer Lightspeed</a></li>
-    <li><a href="index.html">Chapter 1</a></li>
-    <li><a href="section3.html">Section 3</a></li>
+    <li><a href="index.html">Lab Scenario</a></li>
+    <li><a href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a></li>
   </ul>
 </nav>
 </div>
@@ -145,26 +119,66 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Section 3</h1>
-<div class="ulist">
-<ul>
-<li>
-<p>Create multiple copies of this section as needed.</p>
-</li>
-<li>
-<p>Remove any unnecessary sections or chapter pages.</p>
-</li>
-<li>
-<p>Customize the section as appropriate.</p>
-</li>
-<li>
-<p>Ensure that each page contains a manageable amount of content.</p>
-</li>
-</ul>
+<h1 class="page">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the legacy application running, you move on to analysis.
+In this section, you use <strong>Red Hat Migration Toolkit for Applications (MTA)</strong> enhanced with Developer Lightspeed to scan the Coolstore codebase.</p>
+</div>
+<div class="paragraph">
+<p>You identify migration issues, incompatible APIs, and required changes for moving from <strong>javax to jakarta</strong>. Developer Lightspeed provides <strong>AI-assisted recommendations</strong>, helping you focus on the most relevant migration tasks and understand why changes are needed—not just what to change.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_instructions"><a class="anchor" href="#_instructions"></a>Instructions</h2>
+<div class="sectionbody">
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta1.png" alt="mta1">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta2.png" alt="mta2">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta3.png" alt="mta3">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta4.png" alt="mta4">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta5.png" alt="mta5">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta6.png" alt="mta6">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta7.png" alt="mta7">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta8.png" alt="mta8">
+</div>
+</div>
+</div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="section2.html">Section 2</a></span>
-  <span class="next"><a href="../chapter2/index.html">Chapter 2</a></span>
+  <span class="prev"><a href="section2.html">Lab 2: Configure MTA with Developer Lightspeed</a></span>
+  <span class="next"><a href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a></span>
 </nav>
 </article>
   </div>
