@@ -51,7 +51,7 @@ Analysis results may vary depending on the Generative AI (GenAI) model service c
 +
 [NOTE]
 ====
-Applying a recommended change can introduce additional impacts in other parts of the codebase. By using the **Use Agent** option, Developer Lightspeed is able to identify and suggest these follow-on changes. Without **Agent Mode** enabled, such dependent updates may not be detected or reflected.
+Applying a recommended change can introduce additional impacts in other parts of the codebase. By using the **Agent Mode** option, Developer Lightspeed is able to identify and suggest these follow-on changes. Without **Agent Mode** enabled, such dependent updates may not be detected or reflected.
 ====
 
 8. Observe how the total number of reported issues decreases as the first issue is resolved, and note how the analysis results are updated accordingly to reflect the applied changes.
