@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Lab Scenario :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
+    <title>Red Hat Developer Lightspeed for MTA :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
     <link rel="prev" href="../LABENV/index.html">
-    <link rel="next" href="section1.html">
+    <link rel="next" href="../chapter2/index.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -54,20 +54,27 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="index.html">Red Hat Developer Lightspeed for MTA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Lab Scenario</a>
+    <a class="nav-link" href="../chapter2/index.html">Lab Scenario</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
+    <a class="nav-link" href="../chapter2/section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section2.html">Lab 2: Configure MTA with Developer Lightspeed</a>
+    <a class="nav-link" href="../chapter2/section2.html">Lab 2: Configure MTA with Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
+    <a class="nav-link" href="../chapter2/section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
+    <a class="nav-link" href="../chapter2/section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
   </li>
 </ul>
   </li>
@@ -109,7 +116,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Modernizing Java Applications with Red Hat MTA & Developer Lightspeed</a></li>
-    <li><a href="index.html">Lab Scenario</a></li>
+    <li><a href="index.html">Red Hat Developer Lightspeed for MTA</a></li>
   </ul>
 </nav>
 </div>
@@ -118,45 +125,175 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Lab Scenario</h1>
+<h1 class="page">Red Hat Developer Lightspeed for MTA</h1>
 <div class="sect1">
-<h2 id="_situation"><a class="anchor" href="#_situation"></a>Situation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <strong>Coolstore</strong> application is a business-critical retail application currently running on <strong>JBoss EAP 7 as a containerized workload on OpenShift</strong>.</p>
-</div>
-<div class="paragraph">
-<p>The application is built using legacy <strong>javax APIs</strong> and packaged for deployment in a container, allowing it to run reliably in a Kubernetes-based platform—but on an aging Java EE stack.</p>
-</div>
-<div class="paragraph">
-<p>To stay aligned with modern enterprise standards and supported runtimes, the organization needs to <strong>migrate Coolstore to JBoss EAP 8</strong>, also containerized and deployed on OpenShift. This migration requires transforming the application from <strong>javax to jakarta</strong>, while ensuring compatibility, stability, and operational consistency within the OpenShift environment.</p>
-</div>
-<div class="paragraph">
-<p>In this hands-on, lab-oriented training, learners use <strong>Red Hat Migration Toolkit for Applications (MTA) with Developer Lightspeed</strong> to analyze the Coolstore codebase running on EAP 7 containers, identify migration issues, and receive AI-assisted recommendations for modernization.</p>
-</div>
-<div class="paragraph">
-<p>Learners then apply these insights to refactor the legacy code, rebuild the container image, and <strong>deploy the migrated jakarta-based Coolstore application on JBoss EAP 8 running on OpenShift</strong>. The labs closely mirror real-world enterprise modernization efforts, combining application migration with container and platform-aware validation.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_training_scenario_and_approach"><a class="anchor" href="#_training_scenario_and_approach"></a>Training Scenario and Approach</h2>
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>You are responsible for modernizing the <strong>Coolstore</strong> retail application, a production-like enterprise Java workload running as a containerized <strong>JBoss EAP 7</strong> application on OpenShift. The application is stable, but it relies on legacy javax APIs, making it incompatible with newer Jakarta EE–based runtimes.</p>
+<p><strong>Red Hat Developer Lightspeed for migration toolkit for applications</strong> speeds up application refactoring with AI-generated code that is tailored to your enterprise&#8217;s applications.</p>
 </li>
 <li>
-<p>Your goal in this training is to <strong>migrate Coolstore to JBoss EAP 8</strong>, also running in containers on OpenShift, using a controlled, tool-assisted, and repeatable approach—just as you would in a real enterprise modernization project.</p>
+<p>It is an <em>add-on to Red Hat MTA</em> that intelligently automates source code refactoring directly within a developer&#8217;s IDE.</p>
+</li>
+<li>
+<p>This allows organizations to modernize applications more efficiently and accelerate adoption of Red Hat OpenShift and cloud-native technologies, improving the overall return on investment for modernization initiatives.</p>
+</li>
+<li>
+<p>Developer Lightspeed provides clear explanations and recommended code changes during the refactoring process.</p>
+</li>
+<li>
+<p>Developers can review these suggestions and apply fixes with a single click. The tool supports both <strong>out-of-the-box migration paths as well as custom rules</strong>, enabling teams to modernize applications that use organization-specific or proprietary technologies.</p>
+</li>
+<li>
+<p>Red Hat MTA primarily supports application assessment and re-platforming, while Developer Lightspeed for MTA focuses on code refactoring use cases. Together, these tools provide comprehensive support for analyzing applications, planning migrations, and updating source code.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_challenges_of_modernizing_applications"><a class="anchor" href="#_challenges_of_modernizing_applications"></a>Challenges of modernizing applications</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Security concerns:</strong> As migrators refactor applications to use cloud-native technologies, developers (migrator) may accidentally create new security vulnerabilities.</p>
+</li>
+<li>
+<p><strong>Complexity of legacy systems:</strong> Legacy systems often lack compatibility with modern platforms, may have tightly coupled and hidden dependencies, or may be an unfamiliar codebase to the migrator - posing the risk of unintentionally altering or breaking application functionality.</p>
+</li>
+<li>
+<p><strong>Competing priorities:</strong> Enterprises need to balance meeting market challenges and opportunities with the time and costs it takes to improve existing systems, which can be significant. As a result, stakeholders may prioritize new features or applications over improving existing code of their whole application portfolio.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_developer_lightspeed_for_migration_toolkit_for_applications"><a class="anchor" href="#_why_developer_lightspeed_for_migration_toolkit_for_applications"></a>Why Developer Lightspeed for migration toolkit for applications</h2>
+<div class="sectionbody">
+<details>
+<summary class="title"><strong>Speed up application modernization to cloud-native technologies with GenAI</strong>: Click to view the details</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Developer Lightspeed for MTA combines static code analysis with generative AI to identify potential migration issues</p>
+</li>
+<li>
+<p>Create proposed code solutions tailored to a specific migration path, all within a developer&#8217;s IDE.</p>
+</li>
+<li>
+<p>A developer can automatically apply code fixes to one or all occurrences of an issue within an application.</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<details>
+<summary class="title"><strong>Get helpful refactored code suggestions that developers understand and trust</strong>: Click to view the details</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Rule-based static code analysis gives an enterprise&#8217;s preferred LLM guidance on what migration issues to look for and how to solve them, resulting in code solutions that are tailored to a migration path from the start.</p>
+</li>
+<li>
+<p>Issues and suggested code solutions are accompanied by explanations, allowing developers to understand what changes are needed for modernization and why.</p>
+</li>
+<li>
+<p>And once changes are made, developers will see issues and suggested fixes based on real-time IDE diagnostic data, which is gathered from other IDE-installed extensions.</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<details>
+<summary class="title"><strong>Modernize custom technologies</strong>: Click to view the details</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Create your own rules that specify conditions and actions to automate code transformation for applications that use custom corporate technologies.</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<details>
+<summary class="title"><strong>Migrate an application to speed up refactoring of similar applications</strong>: Click to view the details</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Developer Lightspeed for migration toolkit for applications learns from changes made during the migration process.</p>
+</li>
+<li>
+<p>This allows it to accurately predict and generate code-change suggestions required for the rest of your applications with similar characteristics, helping you refactor multiple applications predictably and more efficiently.</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<details>
+<summary class="title"><strong>Bring application modernization into the development flow for faster delivery</strong>: Click to view the details</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Within the IDE, developers will see detailed issues, proposed code solutions with explanations, and differences between the current and suggested versions highlighted when modernizing applications.</p>
+</li>
+<li>
+<p>No context switching between tabs or windows, which can decrease productivity.</p>
+</li>
+<li>
+<p>Once code is successfully refactored locally, this makes it possible to easily push refactored code through the rest of your enterprise’s outer loop development flow for security and quality checks.</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<details>
+<summary class="title"><strong>Control for model performance, cost, and data privacy by bringing your own model</strong>: Click to view the details</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Choose the Large Language model (LLM) that meets your performance, cost, and data privacy requirements - no fine-tuning required.</p>
+</li>
+<li>
+<p>With our RAG architecture, Developer Lightspeed for MTA learns from past code solutions to refactoring problems and stores them in a knowledge base that the LLM of your choice can then use to create contextually relevant code recommendations that developers can automatically apply to a codebase.</p>
+</li>
+<li>
+<p>As a result, you can choose the model - whether it is a <em>public or a self-hosted AI model</em> - that best balances performance, cost, and data privacy for your use case.</p>
+</li>
+<li>
+<p>Developer Lightspeed for Red Hat migration toolkit for applications can be used with a number of LLM providers that offer the OpenAI-compatible API interface including:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Red Hat OpenShift AI (enterprise model builder &amp; inference server)</p>
+</li>
+<li>
+<p>Red Hat Enterprise Linux AI (enterprise inference server)</p>
+</li>
+<li>
+<p>vLLM (popular enterprise inference server)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</details>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../LABENV/index.html">Lab Environment</a></span>
-  <span class="next"><a href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a></span>
+  <span class="next"><a href="../chapter2/index.html">Lab Scenario</a></span>
 </nav>
 </article>
   </div>

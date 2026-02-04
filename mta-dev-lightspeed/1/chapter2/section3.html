@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab 3: Migrating legacy code using MTA and Developer Lightspeed :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
+    <link rel="prev" href="section2.html">
+    <link rel="next" href="section4.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/mta-dev-lightspeed/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mta-dev-lightspeed" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapter1/index.html">Red Hat Developer Lightspeed for MTA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Lab Scenario</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="section2.html">Lab 2: Configure MTA with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Modernizing Java Applications with Red Hat MTA & Developer Lightspeed</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Modernizing Java Applications with Red Hat MTA & Developer Lightspeed</a></li>
+    <li><a href="index.html">Lab Scenario</a></li>
+    <li><a href="section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the legacy application running, you move on to analysis.
+In this section, you use <strong>Red Hat Migration Toolkit for Applications (MTA)</strong> enhanced with Developer Lightspeed to scan the Coolstore codebase.</p>
+</div>
+<div class="paragraph">
+<p>You identify migration issues, incompatible APIs, and required changes for moving from <strong>javax to jakarta</strong>. Developer Lightspeed provides <strong>AI-assisted recommendations</strong>, helping you focus on the most relevant migration tasks and understand why changes are needed—not just what to change.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_instructions"><a class="anchor" href="#_instructions"></a>Instructions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><em>Configure an MTA Analysis Profile</em></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In Visual Studio Code, open the <strong>MTA extension</strong> and select <strong>Open Analysis View</strong>.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta1.png" alt="mta1">
+</div>
+</div>
+</li>
+<li>
+<p>In the Analysis View, observe that no active profile is currently configured. Select <strong>Manage Profiles</strong> to begin profile configuration.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta2.png" alt="mta2">
+</div>
+</div>
+</li>
+<li>
+<p>Select <strong>+ New Profile</strong> to create a new analysis profile.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta3.png" alt="mta3">
+</div>
+</div>
+</li>
+<li>
+<p>Enter <strong>Coolstore</strong> as the profile name and set <strong>Target Technologies</strong> to <strong>jakarta-ee</strong>. Use the reference screenshot to ensure the settings are configured correctly.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta4.png" alt="mta4">
+</div>
+</div>
+</li>
+<li>
+<p>Return to the <strong>MTA Analysis View</strong>, confirm that <strong>Agent Mode</strong> is enabled, and select <strong>Start</strong> to activate the newly created profile.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta5.png" alt="mta5">
+</div>
+</div>
+</li>
+<li>
+<p>Select <strong>Run Analysis</strong> to begin the application analysis. MTA, in combination with Developer Lightspeed and the configured GenAI model, analyzes the entire source codebase. Wait until the analysis reaches <strong>100% completion</strong>.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta7.png" alt="mta7">
+</div>
+</div>
+</li>
+<li>
+<p>Review the analysis results, which highlight reported issues and provide guided recommendations for migrating the application from the javax namespace to the Jakarta EE platform.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta8.png" alt="mta8">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Analysis results may vary depending on the Generative AI (GenAI) model service configured in your environment.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Select the first reported issue and follow the accompanying Arcade video, which demonstrates how Developer Lightspeed proposes code changes directly within the source files. As the suggestions are presented, you may choose to accept or reject each change. Based on your selections, Developer Lightspeed iteratively refines its recommendations and may propose additional updates as required.</p>
+<!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(56.25% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/t3XzB4yORwqLdF8wDzpZ?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="MTA with Developer Lightspeed" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Applying a recommended change can introduce additional impacts in other parts of the codebase. By using the <strong>Use Agent</strong> option, Developer Lightspeed is able to identify and suggest these follow-on changes. Without <strong>Agent Mode</strong> enabled, such dependent updates may not be detected or reflected.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Observe how the total number of reported issues decreases as the first issue is resolved, and note how the analysis results are updated accordingly to reflect the applied changes.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta9.png" alt="mta9">
+</div>
+</div>
+</li>
+<li>
+<p>For the purpose of this lab, a separate repository has been created that contains the fully migrated code as suggested by Developer Lightspeed. You may refer to the following migrated repository for comparison and verification, or to correct your implementation if required.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">https://github.com/opentraining-labs-customizations/getting-started-migrated.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the next section, you will use this migrated repository to deploy the updated application.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="section2.html">Lab 2: Configure MTA with Developer Lightspeed</a></span>
+  <span class="next"><a href="section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

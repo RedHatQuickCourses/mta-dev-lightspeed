@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
+    <title>Modernizing Java Applications with Red Hat Developer Lightspeed for MTA :: Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</title>
     <link rel="next" href="LABENV/index.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../_/css/site.css">
@@ -53,20 +53,27 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter1/index.html">Red Hat Developer Lightspeed for MTA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="chapter1/index.html">Lab Scenario</a>
+    <a class="nav-link" href="chapter2/index.html">Lab Scenario</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="chapter1/section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
+    <a class="nav-link" href="chapter2/section1.html">Lab 1: Deploying Coolstore on JBoss EAP 7</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="chapter1/section2.html">Lab 2: Configure MTA with Developer Lightspeed</a>
+    <a class="nav-link" href="chapter2/section2.html">Lab 2: Configure MTA with Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="chapter1/section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
+    <a class="nav-link" href="chapter2/section3.html">Lab 3: Migrating legacy code using MTA and Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="chapter1/section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
+    <a class="nav-link" href="chapter2/section4.html">Lab 4: Deploying the Migrated App on JBoss EAP 8</a>
   </li>
 </ul>
   </li>
@@ -117,15 +124,15 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</h1>
+<h1 class="page">Modernizing Java Applications with Red Hat Developer Lightspeed for MTA</h1>
 <div class="sect1">
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to this quick course on the <em><strong>Modernizing Java Applications with Red Hat MTA &amp; Developer Lightspeed</strong></em>.</p>
+<p>Welcome to this introductory training on <strong><em>Red Hat Developer Lightspeed for Migration Toolkit for Applications (MTA)</em></strong>.</p>
 </div>
 <div class="paragraph">
-<p>In this hands-on lab training, we shall see all these features of Red Hat Migration Toolkit for Applications (MTA) along with Developer Lightspeed in action.</p>
+<p>This course is designed to introduce <strong>Developer Lightspeed</strong>, explain its role in application modernization, and demonstrate how it works in combination with <strong>Red Hat MTA</strong> to accelerate Java application migration.</p>
 </div>
 </div>
 </div>
@@ -133,7 +140,7 @@
 <h2 id="_whats_in_this_course"><a class="anchor" href="#_whats_in_this_course"></a>What&#8217;s in this course?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A hands-on lab-oriented training demonstrating how to migrate a real-world enterprise Java application using <em>Red Hat Migration Toolkit for Applications (MTA) and Developer Lightspeed</em>, transforming a legacy <strong>javax-based application</strong> deployed on <strong>JBoss EAP 7</strong> into a modern <strong>jakarta-based application</strong> running on <strong>JBoss EAP 8</strong>.</p>
+<p>This training combines a brief conceptual overview with a hands-on, lab-driven use case based on the <strong>Coolstore</strong> application. You will begin by understanding the purpose and capabilities of <strong>Red Hat Developer Lightspeed for MTA</strong>, followed by practical hands-on exercises that demonstrate its value in a real-world modernization scenario.</p>
 </div>
 <div class="paragraph">
 <p>Duration: 1 hours</p>
@@ -149,10 +156,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Shaaf (SME)</p>
+<p>Shaaf Syed, Sr. Principal Technical Marketing Manager</p>
 </li>
 <li>
-<p>RRR (Contributor)</p>
+<p>Ramon Roman Nissen, Principal Product Manager</p>
 </li>
 <li>
 <p>Yogita Soni (Content Architect)</p>
@@ -173,7 +180,22 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Install&#8230;&#8203;</p>
+<p>Understand the purpose and key capabilities of <strong>Red Hat Developer Lightspeed for MTA</strong> and how it assists developers during application modernization.</p>
+</li>
+<li>
+<p>Deploy a legacy <strong>Coolstore</strong> application running on <strong>JBoss EAP 7</strong>, built using the javax-based Java EE APIs.</p>
+</li>
+<li>
+<p>Configure the <strong>MTA extension in Visual Studio Code</strong> and enable <strong>Developer Lightspeed</strong> using a <strong>Generative AI model (Llama) provided through Red Hat Model-as-a-Service (MaaS)</strong>.</p>
+</li>
+<li>
+<p>Analyze the legacy application source code using MTA and Developer Lightspeed to identify migration issues and receive guided refactoring recommendations.</p>
+</li>
+<li>
+<p>Apply the suggested changes to migrate the application from the <strong>javax</strong> namespace to the <strong>Jakarta EE</strong> platform.</p>
+</li>
+<li>
+<p>Deploy and validate the migrated application on <strong>JBoss EAP 8</strong>.</p>
 </li>
 </ul>
 </div>
