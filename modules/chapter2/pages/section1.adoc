@@ -94,6 +94,7 @@ imagestream.image.openshift.io/eap74-coolstore created
 +
 Verify that the resources have been created successfully.
 +
+[source,subs="verbatim,quotes",bash]
 ----
 **oc project coolstore-mono**
 Now using project "coolstore-mono" on server "https://api.cluster-6f2l2.dynamic.redhatworkshops.io:6443".

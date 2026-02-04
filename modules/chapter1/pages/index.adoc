@@ -1,19 +1,74 @@
-= Lab Scenario
+= Red Hat Developer Lightspeed for MTA
 
-== Situation
+== Introduction
 
-The **Coolstore** application is a business-critical retail application currently running on **JBoss EAP 7 as a containerized workload on OpenShift**. 
+* **Red Hat Developer Lightspeed for migration toolkit for applications** speeds up application refactoring with AI-generated code that is tailored to your enterprise's applications.
 
-The application is built using legacy **javax APIs** and packaged for deployment in a container, allowing it to run reliably in a Kubernetes-based platform—but on an aging Java EE stack.
+* It is an _add-on to Red Hat MTA_ that intelligently automates source code refactoring directly within a developer's IDE.
 
-To stay aligned with modern enterprise standards and supported runtimes, the organization needs to **migrate Coolstore to JBoss EAP 8**, also containerized and deployed on OpenShift. This migration requires transforming the application from **javax to jakarta**, while ensuring compatibility, stability, and operational consistency within the OpenShift environment.
+* This allows organizations to modernize applications more efficiently and accelerate adoption of Red Hat OpenShift and cloud-native technologies, improving the overall return on investment for modernization initiatives.
 
-In this hands-on, lab-oriented training, learners use **Red Hat Migration Toolkit for Applications (MTA) with Developer Lightspeed** to analyze the Coolstore codebase running on EAP 7 containers, identify migration issues, and receive AI-assisted recommendations for modernization.
+* Developer Lightspeed provides clear explanations and recommended code changes during the refactoring process.
 
-Learners then apply these insights to refactor the legacy code, rebuild the container image, and **deploy the migrated jakarta-based Coolstore application on JBoss EAP 8 running on OpenShift**. The labs closely mirror real-world enterprise modernization efforts, combining application migration with container and platform-aware validation.
+* Developers can review these suggestions and apply fixes with a single click. The tool supports both **out-of-the-box migration paths as well as custom rules**, enabling teams to modernize applications that use organization-specific or proprietary technologies.
 
-== Training Scenario and Approach
+* Red Hat MTA primarily supports application assessment and re-platforming, while Developer Lightspeed for MTA focuses on code refactoring use cases. Together, these tools provide comprehensive support for analyzing applications, planning migrations, and updating source code.
 
-* You are responsible for modernizing the **Coolstore** retail application, a production-like enterprise Java workload running as a containerized **JBoss EAP 7** application on OpenShift. The application is stable, but it relies on legacy javax APIs, making it incompatible with newer Jakarta EE–based runtimes.
+== Challenges of modernizing applications
 
-* Your goal in this training is to **migrate Coolstore to JBoss EAP 8**, also running in containers on OpenShift, using a controlled, tool-assisted, and repeatable approach—just as you would in a real enterprise modernization project.
+* **Security concerns:** As migrators refactor applications to use cloud-native technologies, developers (migrator) may accidentally create new security vulnerabilities.
+
+* **Complexity of legacy systems:** Legacy systems often lack compatibility with modern platforms, may have tightly coupled and hidden dependencies, or may be an unfamiliar codebase to the migrator - posing the risk of unintentionally altering or breaking application functionality.
+
+* **Competing priorities:** Enterprises need to balance meeting market challenges and opportunities with the time and costs it takes to improve existing systems, which can be significant. As a result, stakeholders may prioritize new features or applications over improving existing code of their whole application portfolio.
+
+== Why Developer Lightspeed for migration toolkit for applications
+
+.**Speed up application modernization to cloud-native technologies with GenAI**: Click to view the details
+[%collapsible]
+====
+* Developer Lightspeed for MTA combines static code analysis with generative AI to identify potential migration issues
+* Create proposed code solutions tailored to a specific migration path, all within a developer's IDE.
+* A developer can automatically apply code fixes to one or all occurrences of an issue within an application.
+====
+
+.**Get helpful refactored code suggestions that developers understand and trust**: Click to view the details
+[%collapsible]
+====
+* Rule-based static code analysis gives an enterprise's preferred LLM guidance on what migration issues to look for and how to solve them, resulting in code solutions that are tailored to a migration path from the start.
+* Issues and suggested code solutions are accompanied by explanations, allowing developers to understand what changes are needed for modernization and why.
+* And once changes are made, developers will see issues and suggested fixes based on real-time IDE diagnostic data, which is gathered from other IDE-installed extensions.
+====
+
+.**Modernize custom technologies**: Click to view the details
+[%collapsible]
+====
+* Create your own rules that specify conditions and actions to automate code transformation for applications that use custom corporate technologies.
+====
+
+.**Migrate an application to speed up refactoring of similar applications**: Click to view the details
+[%collapsible]
+====
+* Developer Lightspeed for migration toolkit for applications learns from changes made during the migration process.
+* This allows it to accurately predict and generate code-change suggestions required for the rest of your applications with similar characteristics, helping you refactor multiple applications predictably and more efficiently.
+====
+
+.**Bring application modernization into the development flow for faster delivery**: Click to view the details
+[%collapsible]
+====
+* Within the IDE, developers will see detailed issues, proposed code solutions with explanations, and differences between the current and suggested versions highlighted when modernizing applications.
+* No context switching between tabs or windows, which can decrease productivity.
+* Once code is successfully refactored locally, this makes it possible to easily push refactored code through the rest of your enterprise’s outer loop development flow for security and quality checks.
+====
+
+.**Control for model performance, cost, and data privacy by bringing your own model**: Click to view the details
+[%collapsible]
+====
+* Choose the Large Language model (LLM) that meets your performance, cost, and data privacy requirements - no fine-tuning required.
+* With our RAG architecture, Developer Lightspeed for MTA learns from past code solutions to refactoring problems and stores them in a knowledge base that the LLM of your choice can then use to create contextually relevant code recommendations that developers can automatically apply to a codebase.
+* As a result, you can choose the model - whether it is a _public or a self-hosted AI model_ - that best balances performance, cost, and data privacy for your use case.
+* Developer Lightspeed for Red Hat migration toolkit for applications can be used with a number of LLM providers that offer the OpenAI-compatible API interface including:
+** Red Hat OpenShift AI (enterprise model builder & inference server)
+** Red Hat Enterprise Linux AI (enterprise inference server)
+** vLLM (popular enterprise inference server)
+====

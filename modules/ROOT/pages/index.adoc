@@ -1,15 +1,15 @@
-= Modernizing Java Applications with Red Hat MTA & Developer Lightspeed
+= Modernizing Java Applications with Red Hat Developer Lightspeed for MTA
 :navtitle: Home
 
 == Introduction
 
-Welcome to this quick course on the _**Modernizing Java Applications with Red Hat MTA & Developer Lightspeed**_.
+Welcome to this introductory training on **_Red Hat Developer Lightspeed for Migration Toolkit for Applications (MTA)_**.
 
-In this hands-on lab training, we shall see all these features of Red Hat Migration Toolkit for Applications (MTA) along with Developer Lightspeed in action.
+This course is designed to introduce **Developer Lightspeed**, explain its role in application modernization, and demonstrate how it works in combination with **Red Hat MTA** to accelerate Java application migration.
 
 == What's in this course?
 
-A hands-on lab-oriented training demonstrating how to migrate a real-world enterprise Java application using _Red Hat Migration Toolkit for Applications (MTA) and Developer Lightspeed_, transforming a legacy **javax-based application** deployed on **JBoss EAP 7** into a modern **jakarta-based application** running on **JBoss EAP 8**.
+This training combines a brief conceptual overview with a hands-on, lab-driven use case based on the **Coolstore** application. You will begin by understanding the purpose and capabilities of **Red Hat Developer Lightspeed for MTA**, followed by practical hands-on exercises that demonstrate its value in a real-world modernization scenario.
 
 Duration: 1 hours
 
@@ -17,8 +17,8 @@ Duration: 1 hours
 
 The PTL team acknowledges the valuable contributions of the following Red Hat associates:
 
-* Shaaf (SME)
-* RRR (Contributor)
+* Shaaf Syed, Sr. Principal Technical Marketing Manager
+* Ramon Roman Nissen, Principal Product Manager
 * Yogita Soni (Content Architect)
 * Anna Swicegood (Learning Product Manager)
 
@@ -26,7 +26,17 @@ The PTL team acknowledges the valuable contributions of the following Red Hat as
 
 On completing this course, you should be able to:
 
-* Install...
+* Understand the purpose and key capabilities of **Red Hat Developer Lightspeed for MTA** and how it assists developers during application modernization.
+
+* Deploy a legacy **Coolstore** application running on **JBoss EAP 7**, built using the javax-based Java EE APIs.
+
+* Configure the **MTA extension in Visual Studio Code** and enable **Developer Lightspeed** using a **Generative AI model (Llama) provided through Red Hat Model-as-a-Service (MaaS)**.
+
+* Analyze the legacy application source code using MTA and Developer Lightspeed to identify migration issues and receive guided refactoring recommendations.
+
+* Apply the suggested changes to migrate the application from the **javax** namespace to the **Jakarta EE** platform.
+
+* Deploy and validate the migrated application on **JBoss EAP 8**.
 
 == Prerequisites
 
