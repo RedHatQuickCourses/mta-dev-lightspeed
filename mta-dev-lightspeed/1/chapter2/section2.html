@@ -80,13 +80,6 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
-  </li>
-</ul>
-  </li>
 </ul>
   </nav>
 </div>
@@ -140,7 +133,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Launch <strong>Visual Studio Code</strong>. From the lower-left corner, select the <strong>Settings (gear) icon</strong>, and then choose <strong>Extensions</strong> to open the Extensions Marketplace.</p>
+<p>Launch <strong>Visual Studio Code</strong> on your local system. From the lower-left corner, select the <strong>Settings (gear) icon</strong>, and then choose <strong>Extensions</strong> to open the Extensions Marketplace.</p>
 <div class="imageblock text-center">
 <div class="content">
 <img src="_images/ext.png" alt="ext">
@@ -228,7 +221,7 @@
 </div>
 </li>
 <li>
-<p>Once the application is created, copy and securely store the <strong>Endpoint URL</strong> and <strong>API Key</strong>, as these values will be required in subsequent configuration steps.</p>
+<p>Once the application is created, copy and securely store the <strong>API Key</strong>, as these values will be required in subsequent configuration steps.</p>
 <div class="imageblock text-center">
 <div class="content">
 <img src="_images/mas6.png" alt="mas6">
@@ -236,7 +229,7 @@
 </div>
 </li>
 <li>
-<p>Return to the <strong>MTA Analysis view in Visual Studio Code</strong> to configure Generative AI settings. Enter the copied <strong>API Key and Endpoint URL</strong>, ensuring that <strong>/v1</strong> is appended to the end of the endpoint URL.</p>
+<p>Return to the <strong>MTA Analysis view in Visual Studio Code</strong> to configure <em>Generative AI settings</em> as shown below. Make sure to substitute the copied <strong>API Key</strong>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">environment:
@@ -245,7 +238,7 @@
 models:
   RedHat-MaaS: &amp;active
     environment:
-      <strong>OPENAI_API_KEY: "XXXXXXXXXXXXX"</strong>
+      <strong>OPENAI_API_KEY: "&lt;your API key&gt;"</strong>
     provider: ChatOpenAI
     args:
       model: llama-4-scout-17b-16e-w4a16
