@@ -4,7 +4,7 @@ In this lab, you prepare the development environment for application modernizati
 
 == Instructions
 
-* Launch **Visual Studio Code**. From the lower-left corner, select the **Settings (gear) icon**, and then choose **Extensions** to open the Extensions Marketplace.
+* Launch **Visual Studio Code** on your local system. From the lower-left corner, select the **Settings (gear) icon**, and then choose **Extensions** to open the Extensions Marketplace.
 +
 image::ext.png[align="center"]
 
@@ -51,11 +51,11 @@ image::mas4.png[align="center"]
 +
 image::mas5.png[align="center"]
 
-* Once the application is created, copy and securely store the **Endpoint URL** and **API Key**, as these values will be required in subsequent configuration steps.
+* Once the application is created, copy and securely store the **API Key**, as these values will be required in subsequent configuration steps.
 +
 image::mas6.png[align="center"]
 
-* Return to the **MTA Analysis view in Visual Studio Code** to configure Generative AI settings. Enter the copied **API Key and Endpoint URL**, ensuring that **/v1** is appended to the end of the endpoint URL.
+* Return to the **MTA Analysis view in Visual Studio Code** to configure _Generative AI settings_ as shown below. Make sure to substitute the copied **API Key**.
 +
 [source,subs="verbatim,quotes",bash]
 ----
@@ -65,7 +65,7 @@ environment:
 models:
   RedHat-MaaS: &active
     environment:
-      **OPENAI_API_KEY: "XXXXXXXXXXXXX"**
+      **OPENAI_API_KEY: "<your API key>"**
     provider: ChatOpenAI
     args:
       model: llama-4-scout-17b-16e-w4a16

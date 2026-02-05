@@ -235,4 +235,4 @@ image::image2.png[align="center"]
 +
 image::image3.png[align="center"]
 +
-**Voilà!** You have successfully migrated the JBoss EAP 7 application from the legacy javax-based codebase to a JBoss EAP 8 application using the Jakarta EE platform.
+**Voilà!** You have successfully migrated the **JBoss EAP 7** application from the legacy **javax-based** codebase to a **JBoss EAP 8** application using the **Jakarta EE** platform.
