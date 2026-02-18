@@ -12,11 +12,11 @@
 
 * Developers can review these suggestions and apply fixes with a single click. The tool supports both **out-of-the-box migration paths as well as custom rules**, enabling teams to modernize applications that use organization-specific or proprietary technologies.
 
-* Red Hat MTA primarily supports application assessment and re-platforming, while Developer Lightspeed for MTA focuses on code refactoring use cases. Together, these tools provide comprehensive support for analyzing applications, planning migrations, and updating source code.
+* Red Hat MTA primarily supports application assessment and re-platforming, while Developer Lightspeed for MTA focuses on code refactoring use cases by using Gen-AI
 
 == Challenges of modernizing applications
 
-* **Security concerns:** As migrators refactor applications to use cloud-native technologies, developers (migrator) may accidentally create new security vulnerabilities.
+* **Security concerns:** Outdated applications and frameworks introduce risks to business operations, application security, and IT, potentially leading to issues such as data leaks.
 
 * **Complexity of legacy systems:** Legacy systems often lack compatibility with modern platforms, may have tightly coupled and hidden dependencies, or may be an unfamiliar codebase to the migrator - posing the risk of unintentionally altering or breaking application functionality.
 
@@ -28,8 +28,9 @@
 [%collapsible]
 ====
 * Developer Lightspeed for MTA combines static code analysis with generative AI to identify potential migration issues
-* Create proposed code solutions tailored to a specific migration path, all within a developer's IDE.
-* A developer can automatically apply code fixes to one or all occurrences of an issue within an application.
+* Create proposed code solutions tailored to a specific migration path, all within a developer’s IDE.
+* Developer Lightspeed agents can handle ripple effects of code changes and fix them to keep the code base in a working state.
+* Developer Lightspeed Solution Server has visibility into existing rules, solved incidents, and manual overrides; capture and track migration metrics; record incident resolution methods; mine insights from solutions; and provide contextual hinting for improved generative output.
 ====
 
 .**Get helpful refactored code suggestions that developers understand and trust**: Click to view the details

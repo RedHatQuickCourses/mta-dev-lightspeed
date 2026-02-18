@@ -17,3 +17,8 @@ Learners then apply these insights to refactor the legacy code, rebuild the cont
 * You are responsible for modernizing the **Coolstore** retail application, a production-like enterprise Java workload running as a containerized **JBoss EAP 7** application on OpenShift. While the application is stable, it relies on legacy **javax** APIs, which makes it incompatible with newer **Jakarta EE-based** runtimes.
 
 * In this training, you use **Red Hat Developer Lightspeed for Migration Toolkit for Applications (MTA)** to guide and accelerate the modernization process. Your goal is to migrate Coolstore to **JBoss EAP 8**, running in containers on OpenShift, by following a controlled, tool-assisted, and repeatable approach—mirroring how application modernization is performed in real-world enterprise environments.
+
+[NOTE]
+====
+JavaEE 7 to JakartaEE 10[https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/8.0/html-single/migration_guide/index#review-the-jakarta-ee-10-features_preparing-for-migration-to-jboss-eap-8]
+====
